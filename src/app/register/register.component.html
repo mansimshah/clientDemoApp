@@ -37,7 +37,7 @@
       <input type="password" placeholder="Repeat Password" name="confirm" formControlName="confirm" required>
       <ul class="help-block">
         <li *ngIf="form.controls.confirm.errors?.required && form.controls.confirm.dirty">This field is required.</li>
-        <li *ngIf="form.errors?.matchingPasswords || form.controls.confirm.dirty">Password do not match</li>
+        <li *ngIf="form.errors?.matchingPasswords && form.controls.confirm.dirty">Password do not match</li>
       </ul>
     </div>
     <!-- <input type="checkbox" checked="checked"> Remember me -->
