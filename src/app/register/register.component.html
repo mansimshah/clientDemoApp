@@ -7,6 +7,8 @@
       <input type="text" placeholder="Enter Email" name="email" formControlName="email" required>
       <ul class="help-block">
         <li *ngIf="form.controls.email.errors?.required && form.controls.email.dirty">This field is required.</li>
+        <li *ngIf="(form.controls.email.errors?.minlength || form.controls.email.errors?.maxlength) && (form.controls.email.dirty)">Minimum characters: 5, Maximun characters: 30</li>
+        <li *ngIf="form.controls.email.errors?.validateEmail && form.controls.email.dirty">This must be a valid e-mail</li>
       </ul>
     </div>
 
@@ -15,6 +17,8 @@
       <input type="text" placeholder="Enter Username" name="username" formControlName="username" required>
       <ul class="help-block">
         <li *ngIf="form.controls.username.errors?.required && form.controls.username.dirty">This field is required.</li>
+        <li *ngIf="form.controls.username.errors?.minlength || form.controls.username.errors?.maxlength">Minimum characters: 3, Maximun characters: 15</li>
+        <li *ngIf="form.controls.username.errors?.validateUsername && form.controls.username.dirty">Username must have alpha-numeric characters only.</li>
       </ul>
     </div>
 
@@ -23,14 +27,17 @@
       <input type="password" placeholder="Enter Password" name="psw" formControlName="password" required>
       <ul class="help-block">
         <li *ngIf="form.controls.password.errors?.required && form.controls.password.dirty">This field is required.</li>
+        <li *ngIf="form.controls.password.errors?.minlength || form.controls.password.errors?.maxlength">Minimum characters: 8, Maximun characters: 35</li>
+        <li *ngIf="form.controls.password.errors?.validatePassword && form.controls.password.dirty">Password must have atleast one number, character, special character</li>
       </ul>
     </div>
 
     <label><b>Repeat Password</b></label>
-    <div [ngClass]= "{'has-error': (form.controls.confirm.errors && form.controls.confirm.dirty), 'has-success': !form.controls.confirm.errors }">
+    <div [ngClass]= "{'has-error': (form.controls.confirm.errors && form.controls.confirm.dirty) || (form.errors?.matchingPasswords && form.controls.confirm.dirty), 'has-success': !form.controls.confirm.errors && !form.errors?.matchingPasswords}">
       <input type="password" placeholder="Repeat Password" name="confirm" formControlName="confirm" required>
       <ul class="help-block">
         <li *ngIf="form.controls.confirm.errors?.required && form.controls.confirm.dirty">This field is required.</li>
+        <li *ngIf="form.errors?.matchingPasswords || form.controls.confirm.dirty">Password do not match</li>
       </ul>
     </div>
     <!-- <input type="checkbox" checked="checked"> Remember me -->

@@ -97,7 +97,7 @@ const passwordValidators = [
 	},
 	{
 		validator: validPassword,
-		message: "Password must have atleast one number and character."
+		message: "Password must have atleast one number, character, special character."
 	}
 ]
 
