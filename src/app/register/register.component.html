@@ -1,6 +1,7 @@
 <h2>Signup Form</h2>
 
-<form [formGroup] = "form" style="border:1px solid #ccc" (submit) = "onRegisterSubmit()">
+<form [formGroup]="form" style="border:1px solid #ccc" 
+(submit)="onRegisterSubmit()">
   <div class="container">
     <label><b>Email</b></label>
     <div [ngClass]= "{'has-error': (form.controls.email.errors && form.controls.email.dirty), 'has-success': !form.controls.email.errors }">
@@ -24,7 +25,7 @@
 
     <label><b>Password</b></label>
     <div [ngClass]= "{'has-error': (form.controls.password.errors && form.controls.password.dirty), 'has-success': !form.controls.password.errors }">
-      <input type="password" placeholder="Enter Password" name="psw" formControlName="password" required>
+      <input type="password" placeholder="Enter Password" name="password" formControlName="password" required>
       <ul class="help-block">
         <li *ngIf="form.controls.password.errors?.required && form.controls.password.dirty">This field is required.</li>
         <li *ngIf="form.controls.password.errors?.minlength || form.controls.password.errors?.maxlength">Minimum characters: 8, Maximun characters: 35</li>

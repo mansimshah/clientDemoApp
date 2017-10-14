@@ -14,10 +14,15 @@ var static      =      require( 'serve-static' );
 var app         =      express();
 const router = express.Router();
 const authentication = require('./routes/authentication')(router);
+const cors = require('cors');
 
 //Connection with Database
 mongoose.connect(database.url);
 var db = mongoose.connection;
+
+app.use(cors({
+	origin: 'http://localhost:4200'
+}))
 
 app.set('port', process.env.PORT || 3000);
 
