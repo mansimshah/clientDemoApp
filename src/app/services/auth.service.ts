@@ -30,7 +30,7 @@ export class AuthService {
     let options = new RequestOptions({ headers: headers });    
     return this.http.get(this.domain + '/authentication/checkUsername/' + username)
     .map((data: any) => {      
-        console.log(JSON.stringify(data))            
+        console.log("===check uname====="+JSON.stringify(data))            
         return data.json();
       },
       error => {                
@@ -43,7 +43,7 @@ export class AuthService {
     let options = new RequestOptions({ headers: headers });    
     return this.http.get(this.domain + '/authentication/checkEmail/' + email)
     .map((data: any) => {
-        console.log(JSON.stringify(data))            
+        console.log("=====check email====="+JSON.stringify(data))     
         return data.json();
       },
       error => {       
