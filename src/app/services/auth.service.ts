@@ -17,10 +17,37 @@ export class AuthService {
     return this.http.post(this.domain + '/authentication/register', user, options)
     .map((data: any) => {      
         console.log(JSON.stringify(data))            
-        return data.json();  
+        return data.json();
+        // window.location.href = '/home';
       },
       error => {                
         console.log(' Error while add new user ' + JSON.stringify(error)); 
+      });
+  }
+
+  checkUsername(username){
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });    
+    return this.http.get(this.domain + '/authentication/checkUsername/' + username)
+    .map((data: any) => {      
+        console.log(JSON.stringify(data))            
+        return data.json();
+      },
+      error => {                
+        console.log(' Error while' + JSON.stringify(error)); 
+      });
+  }
+
+  checkEmail(email){
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });    
+    return this.http.get(this.domain + '/authentication/checkEmail/' + email)
+    .map((data: any) => {
+        console.log(JSON.stringify(data))            
+        return data.json();
+      },
+      error => {       
+        console.log(' Error while ' + JSON.stringify(error)); 
       });
   }
 

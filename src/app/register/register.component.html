@@ -1,5 +1,11 @@
 <h2>Signup Form</h2>
 
+<div class="row show-hide-message">
+  <div [ngClass]="messageClass">
+    {{ message }}
+  </div>
+</div>
+
 <form [formGroup]="form" style="border:1px solid #ccc" 
 (submit)="onRegisterSubmit()">
   <div class="container">
@@ -45,7 +51,7 @@
     <!-- <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p> -->
 
     <div class="clearfix">
-      <button type="submit" class="signupbtn" [disabled]="!form.valid" >Sign Up</button>
+      <button type="submit" class="signupbtn" [disabled]="!form.valid || processing" >Sign Up</button>
       <button type="button" class="cancelbtn">Cancel</button>
     </div>
   </div>

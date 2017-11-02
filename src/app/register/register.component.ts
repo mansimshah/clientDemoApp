@@ -11,6 +11,9 @@ import { AuthService } from '../services/auth.service';
 export class RegisterComponent implements OnInit {
 
   form: FormGroup;
+  message;
+  messageClass;
+  processing = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -96,8 +99,25 @@ export class RegisterComponent implements OnInit {
     }
   }
 
+  disableForm(){
+    this.form.controls['email'].disable();
+    this.form.controls['username'].disable();
+    this.form.controls['password'].disable();
+    this.form.controls['confirm'].disable();
+  }
+
+  enableForm(){
+    this.form.controls['email'].enable();
+    this.form.controls['username'].enable();
+    this.form.controls['password'].enable();
+    this.form.controls['confirm'].enable();
+  }
+
   // Function to submit form
   onRegisterSubmit() {
+    this.processing = true;
+    this.disableForm();
+
     console.log('form submitted');
     console.log(this.form.get('email').value);
     console.log(this.form.get('username').value);
@@ -111,7 +131,20 @@ export class RegisterComponent implements OnInit {
     console.log("user====="+JSON.stringify(user));
     this.authService.registerUser(user).subscribe(data => {
       console.log("====data===="+data);
+      if(!data.success){
+        this.messageClass = "alert alert-danger";
+        this.message = data.message;
+        this.processing = false;
+        this.enableForm();
+      }else{
+        this.messageClass = "alert alert-success";
+        this.message = data.message;
+      }
     });
+  }
+
+  checkEmail(){
+    this.authService.checkEmail(this.form.get('email').value);
   }
 
   ngOnInit() {
