@@ -46,8 +46,8 @@ export class AuthService {
         console.log("=====check email====="+JSON.stringify(data))     
         return data.json();
       },
-      error => {       
-        console.log(' Error while ' + JSON.stringify(error)); 
+      error => {
+        console.log(' Error while ' + JSON.stringify(error));
       });
   }
 

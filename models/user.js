@@ -121,7 +121,7 @@ User.pre('save', function(next) {
 	})
 });
 
-User.methods.comparePassword = (password) => {
+User.methods.comparePassword = function(password) {
 	return bcrypt.compareSync(password, this.password);
 }
 

@@ -9,6 +9,7 @@ import { HomeComponent } from './home/home.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { RegisterComponent } from './register/register.component';
 import { AuthService } from './services/auth.service';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
