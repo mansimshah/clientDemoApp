@@ -6,6 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
 
@@ -23,10 +24,16 @@ const routes: Routes = [
         path: 'dashboard',
         loadChildren: './dashboard/dashboard.module#DashboardModule'
     },
+
     {
         path: 'register',
         loadChildren: './register/register.module#RegisterModule'
-    }
+    },
+
+    {
+        path: 'login',
+        loadChildren: './login/login.module#LoginModule'
+    },
 ]
 
 @NgModule({

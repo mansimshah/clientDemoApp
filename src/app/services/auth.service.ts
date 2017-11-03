@@ -5,7 +5,9 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class AuthService {
 
-  domain = "http://localhost:3000"
+  domain = "http://localhost:3000";
+  authToken;
+  user;
 
   constructor(
     private http: Http
@@ -49,6 +51,23 @@ export class AuthService {
       error => {
         console.log(' Error while ' + JSON.stringify(error));
       });
+  }
+
+  login(user){
+    return this.http.post(this.domain + '/authentication/login', user).map((data: any) => {
+      console.log("=====login user====="+JSON.stringify(data))     
+      return data.json();
+    },
+    error => {
+      console.log(' Error while ' + JSON.stringify(error));
+    });
+  }
+
+  storeUserData(token, user){
+    localStorage.setItem('token', token);
+    localStorage.setItem('user', JSON.stringify(user));
+    this.authToken = token;
+    this.user = user;
   }
 
 }
