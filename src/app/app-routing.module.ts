@@ -7,6 +7,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
 
@@ -34,6 +35,11 @@ const routes: Routes = [
         path: 'login',
         loadChildren: './login/login.module#LoginModule'
     },
+
+    {
+        path: 'profile',
+        loadChildren: './profile/profile.module#ProfileModule'
+    }
 ]
 
 @NgModule({
