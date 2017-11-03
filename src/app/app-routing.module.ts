@@ -9,6 +9,9 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 
+import { AuthGuard } from './guards/auth.guard';
+import { NotAuthGuard } from './guards/notAuth.guard';
+
 const routes: Routes = [
 
     // {
@@ -23,22 +26,26 @@ const routes: Routes = [
     
     {
         path: 'dashboard',
-        loadChildren: './dashboard/dashboard.module#DashboardModule'
+        loadChildren: './dashboard/dashboard.module#DashboardModule',
+        canActivate: [AuthGuard]
     },
 
     {
         path: 'register',
-        loadChildren: './register/register.module#RegisterModule'
+        loadChildren: './register/register.module#RegisterModule',
+        canActivate: [NotAuthGuard]
     },
 
     {
         path: 'login',
-        loadChildren: './login/login.module#LoginModule'
+        loadChildren: './login/login.module#LoginModule',
+        canActivate: [NotAuthGuard]
     },
 
     {
         path: 'profile',
-        loadChildren: './profile/profile.module#ProfileModule'
+        loadChildren: './profile/profile.module#ProfileModule',
+        canActivate: [AuthGuard]
     }
 ]
 
