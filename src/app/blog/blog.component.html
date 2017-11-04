@@ -1,0 +1,58 @@
+<h1 class="page-header">Blog Feed</h1>
+
+<!-- <div class="row show-hide-message">
+  <div [ngClass]="messageClass">
+    {{ message }}
+  </div>
+</div> -->
+
+<button type="button" name="button" class="btn btn-default" *ngIf="!newPost" (click)="newBlogForm()">New Post</button>
+<button [disabled]="loadingBlogs" type="button" name="button" class="btn btn-default" *ngIf="!newPost" (click)="reloadBlogs()">
+  <span class="glyphicon glyphicon-repeat"></span>&nbsp;&nbsp;
+  Reload
+</button>
+<br/><br/>
+
+<div *ngIf="!newPost">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">
+        Post Title
+      </h3>
+    </div>
+    <div class="panel-body">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla non euismod mi. Aliquam semper orci et ligula aliquam, non blandit lacus facilisis. In ut nunc felis. In hac habitasse platea dictumst. Mauris tincidunt risus vel dolor dapibus imperdiet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Praesent sed diam nec dui vehicula scelerisque eu eu tellus.
+    </div>
+
+    <!-- start footer -->
+    <div class="panel-footer">
+      <strong>Posted by: </strong>Mansi Shah
+      <br/>
+      <strong>Date: </strong>4 Nov,2017
+      <br/>
+      <div>
+        <strong>Likes: </strong>25
+        <br/>
+        <strong>Dislikes: </strong>22
+      </div>
+      <a href="#">
+        <button type="button" name="button" class="btn btn-sm btn-info">Edit</button>
+      </a>
+      <a href="#">
+        <button type="button" name="button" class="btn btn-sm btn-danger">Delete</button>
+      </a>
+      <div class="dropdown">
+        <button type="button" name="button" class="btn btn-sm btn-success">
+          <span class="glyphicon glyphicon-thumbs-up">&nbsp;</span>Likes: 21
+        </button>
+        <div class="dropdown-content">
+          <a href="#">Mansi</a>
+          <a href="#">Mukul</a>
+          <a href="#">Shah</a>
+        </div>
+      </div>
+    </div>
+    <!-- end footer -->
+    
+  </div>  
+</div>
