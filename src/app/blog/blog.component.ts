@@ -26,6 +26,10 @@ export class BlogComponent implements OnInit {
     },4000);
   }
 
+  draftComment(){
+    
+  }
+
   ngOnInit() {
   }
 

@@ -14,6 +14,7 @@ var static      =      require( 'serve-static' );
 var app         =      express();
 const router = express.Router();
 const authentication = require('./routes/authentication')(router);
+const blogs = require('./routes/blog')(router);
 const cors = require('cors');
 
 //Connection with Database
@@ -35,6 +36,7 @@ app.use(bodyParser());
 
 app.use( static( path.join( __dirname, '/dist/' )));
 app.use('/authentication',authentication);
+app.use('/blogs',blogs);
 
 app.get('*', (req, res) => {
 	res.sendFile(path.join(__dirname + '/dist/index.html'));

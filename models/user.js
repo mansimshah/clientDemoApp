@@ -20,7 +20,6 @@ let validEmailChecker = (email) => {
 		return false;
 	} else {
 		const regExp = new RegExp(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/);
-
 		return regExp.test(email);
 	}
 }

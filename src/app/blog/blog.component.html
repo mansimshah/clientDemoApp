@@ -41,6 +41,8 @@
       <a href="#">
         <button type="button" name="button" class="btn btn-sm btn-danger">Delete</button>
       </a>
+
+      <!-- Likes dropdown -->
       <div class="dropdown">
         <button type="button" name="button" class="btn btn-sm btn-success">
           <span class="glyphicon glyphicon-thumbs-up">&nbsp;</span>Likes: 21
@@ -51,8 +53,33 @@
           <a href="#">Shah</a>
         </div>
       </div>
+
+      <!-- Dislikes dropdown -->
+      <div class="dropdown">
+        <button type="button" name="button" class="btn btn-sm btn-warning">
+          <span class="glyphicon glyphicon-thumbs-down">&nbsp;</span>Dislikes: 21
+        </button>
+        <div class="dropdown-content">
+          <a href="#">Mansi</a>
+          <a href="#">Mukul</a>
+          <a href="#">Shah</a>
+        </div>
+      </div>
+
     </div>
     <!-- end footer -->
+
+    <ul class="list-group">
+      <li class="list-group-item">
+        <button type="button" name="button" class="btn btn-sm btn-danger" (click)="draftComment()">Post Comment</button>
+        <br/>
+        <!-- <form>
+          <textarea name="comment" rows="10" cols="30"></textarea>
+          <button type="button" name="button" class="btn btn-sm btn-info">Submit Post</button>
+          <button type="button" name="button" class="btn btn-sm btn-danger">Cancel</button>
+        </form> -->
+      </li>
+    </ul>
     
   </div>  
 </div>
