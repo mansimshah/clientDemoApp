@@ -6,8 +6,7 @@
   </div>
 </div>
 
-<form [formGroup]="form" style="border:1px solid #ccc" 
-(submit)="onRegisterSubmit()">
+<form [formGroup]="form" style="border:1px solid #ccc" (submit)="onRegisterSubmit()">
   <div class="container">
     <label><b>Email</b></label>
     <div [ngClass]= "{'has-error': (form.controls.email.errors && form.controls.email.dirty) || (!emailValid && form.controls.email.dirty), 'has-success': !form.controls.email.errors && emailValid}">

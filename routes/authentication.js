@@ -132,24 +132,25 @@ module.exports = (router) => {
     });
 
     // Middleware for headers
-    // router.use((req, res, next) => {
-    //     const token = req.headers['authorization'];
-    //     if (!token){
-    //         res.json({ success: false, message: 'No token provided' });
-    //     } else {
-    //         jwt.verify(token, config.secret, (err, decoded) => {
-    //             if (err){
-    //                 res.json({ success: false, message: 'Token invalid '+ err});
-    //             } else {
-    //                 // req.decoded is global variable
-    //                 req.decoded = decoded;
-    //                 next();
-    //             }
-    //         });
-    //     }
-    // });
+    router.use((req, res, next) => {
+        const token = req.headers['authorization'];
+        if (!token){
+            res.json({ success: false, message: 'No token provided' });
+        } else {
+            jwt.verify(token, config.secret, (err, decoded) => {
+                if (err){
+                    res.json({ success: false, message: 'Token invalid '+ err});
+                } else {
+                    // req.decoded is global variable
+                    req.decoded = decoded;
+                    next();
+                }
+            });
+        }
+    });
 
     router.get('/profile', (req, res) => {
+        console.log("====req.decoded.userId===="+req.decoded.userId);
         User.findOne({ _id: req.decoded.userId }).select(' username email').exec((err, user) => {
             if (err){
                 res.json({ success: false, message: err});
@@ -162,6 +163,6 @@ module.exports = (router) => {
             }
         });
     });
-    
+
     return router;
 }

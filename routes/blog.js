@@ -36,13 +36,13 @@ module.exports = (router) => {
                                 res.json({ success: false, message: err });
                             }
                         } else {
+                            console.log("====blog saved===="+JSON.stringify(blog));
                             res.json({ success: true, message: 'Blog saved!' });
                         }
                     })
                 }
             }
         }
-        // res.send('test');
     });
 
     return router;
