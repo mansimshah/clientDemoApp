@@ -9,6 +9,7 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { BlogComponent } from './blog/blog.component';
+import { EditBlogComponent } from './edit-blog/edit-blog.component';
 
 import { AuthGuard } from './guards/auth.guard';
 import { NotAuthGuard } from './guards/notAuth.guard';
@@ -53,6 +54,17 @@ const routes: Routes = [
         path: 'blog',
         loadChildren: './blog/blog.module#BlogModule',
         canActivate: [AuthGuard]
+    },
+
+    {
+        path: 'edit-blog/:id',
+        loadChildren: './edit-blog/edit-blog.module#EditBlogModule',
+        canActivate: [AuthGuard]
+    },
+
+    { 
+        path: '**', 
+        loadChildren: './home/home.module#HomeModule' 
     }
 ]
 
